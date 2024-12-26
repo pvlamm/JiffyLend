@@ -5,6 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-internal class AccountCustomer
+public record AccountCustomer
 {
 }

@@ -11,7 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\JiffyLend.Core.Infrastructure\JiffyLend.Core.Infrastructure.csproj" />
     <ProjectReference Include="..\JiffyLend.Core\JiffyLend.Core.csproj" />
+    <ProjectReference Include="..\JiffyLend.Module.Core.Domain\JiffyLend.Module.Core.Domain.csproj" />
   </ItemGroup>
 
 </Project>
