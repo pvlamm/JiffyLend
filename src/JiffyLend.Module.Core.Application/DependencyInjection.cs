@@ -1,10 +1,9 @@
 ﻿namespace JiffyLend.Module.Core.Application;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-internal class DependencyInjection
+using JiffyLend.Core.Common.Interfaces;
+
+using Microsoft.Extensions.DependencyInjection;
+
+public static class DependencyInjection
 {
 }

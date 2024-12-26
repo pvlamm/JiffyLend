@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore;
 public interface ICoreDbContext
 {
     DbSet<Account> Accounts { get; }
-    DbSet<AccountBalance> AccountBalances { get; }
-    DbSet<AccountCustomer> AccountCustomers { get; }
+    DbSet<AccountActivity> AccountActivities { get; }
+    DbSet<Customer> AccountCustomers { get; }
     DbSet<MemoPost> MemoPosts { get; }
 
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);

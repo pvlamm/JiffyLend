@@ -13,4 +13,9 @@
     <ProjectReference Include="..\JiffyLend.Module.Core.Domain\JiffyLend.Module.Core.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Messaging\" />
+    <Folder Include="Persistance\" />
+  </ItemGroup>
+
 </Project>
