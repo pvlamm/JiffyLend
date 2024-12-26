@@ -1,0 +1,95 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "[00 - Common]", "[00 - Common]", "{FE9CED47-81F2-41FC-A86C-0BA2D4B9040F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "[01 - Modules]", "[01 - Modules]", "{F447AB25-9DE1-423F-AC01-39340A3AD85D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "[02 - WebAPI]", "[02 - WebAPI]", "{F627DEF4-39B3-4DEA-942F-A5541134B18D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "[99 - Testing]", "[99 - Testing]", "{89468F5C-C13D-49DB-84C9-2B1A2674BC37}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "[01-01 Core]", "[01-01 Core]", "{DEE22B38-A880-4BAC-9446-BAEBF8B1DB1C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "[01-02 Card]", "[01-02 Card]", "{5F4D4FF9-A2EB-435D-B8B8-50E7DF06CB57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JiffyLend.WebAPI", "JiffyLend.WebAPI\JiffyLend.WebAPI.csproj", "{49D89C50-4176-4873-9EAA-777409A7A757}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JiffyLend.Module.Core.Domain", "JiffyLend.Module.Core.Domain\JiffyLend.Module.Core.Domain.csproj", "{D3500BD6-276A-42FF-971D-60F5A10D1F2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JiffyLend.Module.Core.Application", "JiffyLend.Module.Core.Application\JiffyLend.Module.Core.Application.csproj", "{888B9578-0469-475B-96B4-86F50D659E0D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JiffyLend.Module.Core.Infrastructure", "JiffyLend.Module.Core.Infrastructure\JiffyLend.Module.Core.Infrastructure.csproj", "{6435ACDD-4F71-4D88-B2A4-6378D4246FD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JiffyLend.Module.Card.Domain", "JiffyLend.Module.Card.Domain\JiffyLend.Module.Card.Domain.csproj", "{D67491B1-ED13-4AB6-B5A8-58660E84DABF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JiffyLend.Module.Card.Application", "JiffyLend.Module.Card.Application\JiffyLend.Module.Card.Application.csproj", "{34FC8372-8E3B-4B78-BE35-154A3F4A5D3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JiffyLend.Module.Card.Infrastructure", "JiffyLend.Module.Card.Infrastructure\JiffyLend.Module.Card.Infrastructure.csproj", "{F5E5199F-6D4C-4D41-B133-B7C14477E20B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JiffyLend.Core", "JiffyLend.Core\JiffyLend.Core.csproj", "{1C0CE26F-7DD0-422F-951E-CD860231F839}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JiffyLend.Core.Infrastructure", "JiffyLend.Core.Infrastructure\JiffyLend.Core.Infrastructure.csproj", "{907D3C50-E5EA-43A9-9B04-1848EE977E14}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{49D89C50-4176-4873-9EAA-777409A7A757}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49D89C50-4176-4873-9EAA-777409A7A757}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49D89C50-4176-4873-9EAA-777409A7A757}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49D89C50-4176-4873-9EAA-777409A7A757}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3500BD6-276A-42FF-971D-60F5A10D1F2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3500BD6-276A-42FF-971D-60F5A10D1F2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3500BD6-276A-42FF-971D-60F5A10D1F2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3500BD6-276A-42FF-971D-60F5A10D1F2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{888B9578-0469-475B-96B4-86F50D659E0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{888B9578-0469-475B-96B4-86F50D659E0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{888B9578-0469-475B-96B4-86F50D659E0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{888B9578-0469-475B-96B4-86F50D659E0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6435ACDD-4F71-4D88-B2A4-6378D4246FD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6435ACDD-4F71-4D88-B2A4-6378D4246FD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6435ACDD-4F71-4D88-B2A4-6378D4246FD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6435ACDD-4F71-4D88-B2A4-6378D4246FD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D67491B1-ED13-4AB6-B5A8-58660E84DABF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D67491B1-ED13-4AB6-B5A8-58660E84DABF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D67491B1-ED13-4AB6-B5A8-58660E84DABF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D67491B1-ED13-4AB6-B5A8-58660E84DABF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34FC8372-8E3B-4B78-BE35-154A3F4A5D3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34FC8372-8E3B-4B78-BE35-154A3F4A5D3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34FC8372-8E3B-4B78-BE35-154A3F4A5D3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34FC8372-8E3B-4B78-BE35-154A3F4A5D3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5E5199F-6D4C-4D41-B133-B7C14477E20B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5E5199F-6D4C-4D41-B133-B7C14477E20B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5E5199F-6D4C-4D41-B133-B7C14477E20B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5E5199F-6D4C-4D41-B133-B7C14477E20B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C0CE26F-7DD0-422F-951E-CD860231F839}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C0CE26F-7DD0-422F-951E-CD860231F839}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C0CE26F-7DD0-422F-951E-CD860231F839}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C0CE26F-7DD0-422F-951E-CD860231F839}.Release|Any CPU.Build.0 = Release|Any CPU
+		{907D3C50-E5EA-43A9-9B04-1848EE977E14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{907D3C50-E5EA-43A9-9B04-1848EE977E14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{907D3C50-E5EA-43A9-9B04-1848EE977E14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{907D3C50-E5EA-43A9-9B04-1848EE977E14}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DEE22B38-A880-4BAC-9446-BAEBF8B1DB1C} = {F447AB25-9DE1-423F-AC01-39340A3AD85D}
+		{5F4D4FF9-A2EB-435D-B8B8-50E7DF06CB57} = {F447AB25-9DE1-423F-AC01-39340A3AD85D}
+		{49D89C50-4176-4873-9EAA-777409A7A757} = {F627DEF4-39B3-4DEA-942F-A5541134B18D}
+		{D3500BD6-276A-42FF-971D-60F5A10D1F2F} = {DEE22B38-A880-4BAC-9446-BAEBF8B1DB1C}
+		{888B9578-0469-475B-96B4-86F50D659E0D} = {DEE22B38-A880-4BAC-9446-BAEBF8B1DB1C}
+		{6435ACDD-4F71-4D88-B2A4-6378D4246FD9} = {DEE22B38-A880-4BAC-9446-BAEBF8B1DB1C}
+		{D67491B1-ED13-4AB6-B5A8-58660E84DABF} = {5F4D4FF9-A2EB-435D-B8B8-50E7DF06CB57}
+		{34FC8372-8E3B-4B78-BE35-154A3F4A5D3F} = {5F4D4FF9-A2EB-435D-B8B8-50E7DF06CB57}
+		{F5E5199F-6D4C-4D41-B133-B7C14477E20B} = {5F4D4FF9-A2EB-435D-B8B8-50E7DF06CB57}
+		{1C0CE26F-7DD0-422F-951E-CD860231F839} = {FE9CED47-81F2-41FC-A86C-0BA2D4B9040F}
+		{907D3C50-E5EA-43A9-9B04-1848EE977E14} = {FE9CED47-81F2-41FC-A86C-0BA2D4B9040F}
+	EndGlobalSection
+EndGlobal

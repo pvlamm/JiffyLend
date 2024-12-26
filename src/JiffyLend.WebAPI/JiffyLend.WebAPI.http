@@ -1,0 +1,6 @@
+@JiffyLend.WebAPI_HostAddress = http://localhost:5153
+
+GET {{JiffyLend.WebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
