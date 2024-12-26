@@ -12,11 +12,4 @@
     <ProjectReference Include="..\JiffyLend.Module.Core.Domain\JiffyLend.Module.Core.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Endpoints\Account\" />
-    <Folder Include="Endpoints\AccountBalance\" />
-    <Folder Include="Endpoints\Customer\" />
-    <Folder Include="Endpoints\MemoPost\" />
-  </ItemGroup>
-
 </Project>

@@ -1,4 +1,4 @@
-﻿namespace JiffyLend.Module.Core.Application.Account.Queries.AccountBalance;
+﻿namespace JiffyLend.Module.Core.Application.AccountBalance.Queries;
 using System;
 using System.Collections.Generic;
 using System.Linq;

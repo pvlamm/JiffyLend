@@ -1,10 +1,10 @@
-﻿namespace JiffyLend.Module.Core.Application.Account.Queries;
+﻿namespace JiffyLend.Module.Core.Application.Endpoints.Account;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public class AccountBalanceQuery
+internal class CreateAccountEndpoint
 {
 }
