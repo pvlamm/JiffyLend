@@ -25,6 +25,12 @@ public class GetAccountInfoQueryHandler : IRequestHandler<GetAccountInfoQuery, A
 
     public async Task<AccountInfo> Handle(GetAccountInfoQuery request, CancellationToken cancellationToken)
     {
+        var account = await _accountService.GetAccount(request.AccountNumber);
 
+        return new AccountInfo
+        {
+            AccountNumber = account.AccountNumber,
+
+        };
     }
 }
