@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 
 using FluentValidation;
 
+using JiffyLend.Module.Core.Application.Common.Interfaces;
+
 public class ClearMemoPostCommandValidator : AbstractValidator<ClearMemoPostCommand>
 {
-    public ClearMemoPostCommandValidator()
+    public ClearMemoPostCommandValidator(IMemoPostService memoPostService)
     {
     }
 }

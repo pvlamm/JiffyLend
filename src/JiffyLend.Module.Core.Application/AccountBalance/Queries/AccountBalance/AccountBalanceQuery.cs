@@ -5,6 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public class AccountBalanceQuery
+using JiffyLend.Module.Core.Application.Common.Models;
+
+using MediatR;
+
+public class AccountBalanceQuery : IRequest<AccountInfo>
 {
 }

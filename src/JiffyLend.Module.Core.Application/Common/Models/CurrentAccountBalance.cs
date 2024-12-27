@@ -1,7 +1,7 @@
 ﻿namespace JiffyLend.Module.Core.Application.Common.Models;
 using System;
 
-public class AccountBalance
+public class CurrentAccountBalance
 {
     public string AccountNumber { get; set; }
     public DateTime BalanceAsOf { get; set; }

@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public class UpdateAccountCommand
+using MediatR;
+
+public class UpdateAccountCommand : IRequest<bool>
 {
 }

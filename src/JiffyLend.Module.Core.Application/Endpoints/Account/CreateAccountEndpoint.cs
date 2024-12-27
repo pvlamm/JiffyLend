@@ -5,6 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-internal class CreateAccountEndpoint
+using JiffyLend.Core.Interfaces;
+
+using Microsoft.AspNetCore.Routing;
+
+public class CreateAccountEndpoint : IEndpoint
 {
+    public void MapEndpoint(IEndpointRouteBuilder app)
+    {
+        throw new NotImplementedException();
+    }
 }
