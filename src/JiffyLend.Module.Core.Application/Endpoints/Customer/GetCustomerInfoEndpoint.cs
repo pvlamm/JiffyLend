@@ -7,6 +7,7 @@ using JiffyLend.Module.Core.Application.Customer.Queries;
 using MediatR;
 
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 
 public class GetCustomerInfoEndpoint : IEndpoint
@@ -19,6 +20,6 @@ public class GetCustomerInfoEndpoint : IEndpoint
                 .Send(new GetCustomerInfoByIdQuery { Id = id }, token);
 
             return customerInfo;
-        });
+        }).WithTags("Customer");
     }
 }

@@ -15,7 +15,7 @@
 
   <ItemGroup>
     <Folder Include="Messaging\" />
-    <Folder Include="Persistance\" />
+    <Folder Include="Persistance\Configurations\" />
   </ItemGroup>
 
 </Project>

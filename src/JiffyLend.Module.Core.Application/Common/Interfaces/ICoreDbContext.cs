@@ -12,5 +12,8 @@ public interface ICoreDbContext
     DbSet<Customer> AccountCustomers { get; }
     DbSet<MemoPost> MemoPosts { get; }
 
+    Task BeginTransactionAsync();
+    Task CommitTransactionAsync();
+    void RollbackTransaction();
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

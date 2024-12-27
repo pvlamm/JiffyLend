@@ -30,7 +30,7 @@ public static class DependencyInjection
         services.AddValidatorsFromAssemblies(assemblies);
         services.AddMediatR(cfg => {
             cfg.RegisterServicesFromAssemblies(assemblies);
-            cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<>));
+            //cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<>));
             cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(UnhandledExceptionBehavior<,>));
             cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
             cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(PerformanceBehavior<,>));
