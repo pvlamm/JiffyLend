@@ -9,6 +9,9 @@ public interface IAccountService
     bool AccountExists(string accountNumber);
     bool AccountExists(Guid id);
     bool HasAvailableFunds(string accountNumber, long amount);
-    Task<Account> GetAccount(string accountNumber);
-
+    Task<Account> GetAccountAccountNumber(string accountNumber, CancellationToken token = default);
+    Task<Account> GetAccountById(Guid id, CancellationToken token = default);
+    Task<Guid> Create(Account account, CancellationToken token = default);
+    Task Update(Account account, CancellationToken token = default);
+    Task Delete(Guid id, CancellationToken token = default);
 }

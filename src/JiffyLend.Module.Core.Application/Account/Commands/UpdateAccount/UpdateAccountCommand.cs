@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 
 using MediatR;
 
-public class UpdateAccountCommand : IRequest<bool>
+public class UpdateAccountCommand : IRequest
 {
 }
