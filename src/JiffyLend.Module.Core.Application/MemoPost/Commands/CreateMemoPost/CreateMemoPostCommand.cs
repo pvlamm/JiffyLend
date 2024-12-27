@@ -3,6 +3,9 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
+using JiffyLend.Module.Core.Application.Common.Interfaces;
+using JiffyLend.Module.Core.Application.Common.Models.Mapper;
+
 using MediatR;
 
 public class CreateMemoPostCommand : IRequest<Guid>
@@ -14,8 +17,17 @@ public class CreateMemoPostCommand : IRequest<Guid>
 
 public class CreateMemoPostCommandHandler : IRequestHandler<CreateMemoPostCommand, Guid>
 {
-    public Task<Guid> Handle(CreateMemoPostCommand request, CancellationToken cancellationToken)
+    private readonly IMemoPostService _memoPostService;
+    public CreateMemoPostCommandHandler(IMemoPostService memoPostService)
     {
-        throw new NotImplementedException();
+        _memoPostService = memoPostService;
+    }
+
+    public async Task<Guid> Handle(CreateMemoPostCommand request, CancellationToken cancellationToken)
+    {
+        var mapper = new MemoPostMapper();
+        var memoPost = mapper.ToMemoPost(request);
+
+        return await _memoPostService.Create(memoPost, cancellationToken);
     }
 }

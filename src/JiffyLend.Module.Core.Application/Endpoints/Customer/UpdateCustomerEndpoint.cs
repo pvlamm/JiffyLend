@@ -20,18 +20,20 @@ public class UpdateCustomerEndpoint : IEndpoint
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
         app.MapPut("customer/{id:guid}",
-            async (UpdateCustomer command,
+            async (Guid id, 
+            UpdateCustomer command,
             ISender sender,
             CancellationToken token) =>
             {
-                var mapper = new CustomerMapper();
-                var updateCustomerCommand =
-                    mapper.ToUpdateCustomerCommand(command);
+                if (command == null) return Results.NoContent();
+
+                var updateCustomerCommand = command.ToUpdateCustomerCommand();
+                updateCustomerCommand.Id = id;
 
                 await sender
                     .Send(updateCustomerCommand, token);
 
-                Results.Accepted();
+                return Results.Accepted();
 
             }).WithTags("Customer");
     }

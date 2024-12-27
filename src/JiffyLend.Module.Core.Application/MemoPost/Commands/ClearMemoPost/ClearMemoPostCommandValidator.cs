@@ -1,9 +1,4 @@
 ﻿namespace JiffyLend.Module.Core.Application.MemoPost.Commands;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using FluentValidation;
 
@@ -11,7 +6,13 @@ using JiffyLend.Module.Core.Application.Common.Interfaces;
 
 public class ClearMemoPostCommandValidator : AbstractValidator<ClearMemoPostCommand>
 {
+    public static string ERROR_MEMO_POST_CANNOT_CLEAR = "MemoPost Cannot be Cleared";
+
     public ClearMemoPostCommandValidator(IMemoPostService memoPostService)
     {
+        RuleFor(x => x.Id)
+            .Must(memoPostService.CanClear)
+            .WithMessage(ERROR_MEMO_POST_CANNOT_CLEAR);
+
     }
 }

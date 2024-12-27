@@ -2,6 +2,7 @@
 using System;
 
 using JiffyLend.Module.Core.Application.Common.Interfaces;
+using JiffyLend.Module.Core.Application.Common.Models.Mapper;
 
 using MediatR;
 
@@ -21,8 +22,8 @@ public class CreateCustomerCommandHanlder : IRequestHandler<CreateCustomerComman
         _customerService = customerService;
     }
 
-    public Task<Guid> Handle(CreateCustomerCommand request, CancellationToken cancellationToken)
+    public async Task<Guid> Handle(CreateCustomerCommand request, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        return await _customerService.Create(request.ToCustomer(), cancellationToken);
     }
 }

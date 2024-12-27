@@ -1,9 +1,5 @@
 ﻿namespace JiffyLend.Module.Core.Application.Endpoints.MemoPost;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using JiffyLend.Core.Interfaces;
 using JiffyLend.Module.Core.Application.MemoPost.Commands;
@@ -23,14 +19,10 @@ public class DeleteMemoPostEndpoint : IEndpoint
             ISender sender, 
             CancellationToken token) => {
 
-            var result = await sender
+            await sender
                 .Send(new DeleteMemoPostCommand { Id = id }, token);
 
-            if (result)
-                Results.Accepted();
-
-            else
-                Results.BadRequest();
+            return Results.Accepted();
 
         }).WithTags("Memo-Post");
     }

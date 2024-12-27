@@ -1,14 +1,18 @@
 ﻿namespace JiffyLend.Core.Infrastructure;
 
-using JiffyLend.Core.Common.Interfaces;
-using JiffyLend.Core.Common;
-using Microsoft.Extensions.DependencyInjection;
-using JiffyLend.Core.Infrastructure.Interfaces;
 using System;
-using FluentValidation;
-using JiffyLend.Core.Infrastructure.Security.Behaviors;
-using MediatR;
 using System.Reflection;
+
+using FluentValidation;
+
+using JiffyLend.Core.Common;
+using JiffyLend.Core.Common.Interfaces;
+using JiffyLend.Core.Infrastructure.Interfaces;
+using JiffyLend.Core.Infrastructure.Security.Behaviors;
+
+using MediatR;
+
+using Microsoft.Extensions.DependencyInjection;
 
 /// <summary>
 /// Handles the wireups for JiffyLand.Core and
@@ -23,7 +27,6 @@ public static class DependencyInjection
     .Where(a => a.FullName.Contains("Application"))
     .ToArray();
 
-        // services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         services.AddValidatorsFromAssemblies(assemblies);
         services.AddMediatR(cfg => {
             cfg.RegisterServicesFromAssemblies(assemblies);

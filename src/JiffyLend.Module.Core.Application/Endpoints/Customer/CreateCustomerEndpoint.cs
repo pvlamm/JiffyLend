@@ -21,12 +21,8 @@ public class CreateCustomerEndpoint : IEndpoint
     {
         app.MapPost("customer", async (CreateCustomer command, ISender sender, CancellationToken token) =>
         {
-            var mapper = new CustomerMapper();
-            var createCustomerCommand = mapper
-                .ToCreateCustomerCommand(command);
-
             var result = await sender
-                .Send(createCustomerCommand, token);
+                .Send(command.ToCreateCustomerCommand(), token);
 
             return Results.Created($"customer/{result}", result);
 

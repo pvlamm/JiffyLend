@@ -6,9 +6,14 @@ using JiffyLend.Module.Core.Domain.Entities;
 
 public interface ICustomerService
 {
-    Task<bool> EmailExists(string email);
-    Task<Guid> Create(Customer customer);
-    Task<bool> Update(Customer customer);
-    Task<bool> Delete(Guid id);
+    bool EmailExists(string email);
+    bool Exists(Guid id);
+
+    Task<Customer> GetCustomerById(Guid id, CancellationToken token = default);
+    Task<Customer> GetCustomerByEmailAddress(string emailAddress, CancellationToken token = default);
+
+    Task<Guid> Create(Customer customer, CancellationToken token = default);
+    Task<bool> Update(Customer customer, CancellationToken token = default);
+    Task<bool> Delete(Guid id, CancellationToken token = default);
 
 }

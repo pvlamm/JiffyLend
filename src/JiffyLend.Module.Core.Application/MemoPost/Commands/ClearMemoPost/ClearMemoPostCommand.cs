@@ -22,6 +22,6 @@ public class ClearMemoPostCommandHandler : IRequestHandler<ClearMemoPostCommand>
 
     public async Task Handle(ClearMemoPostCommand request, CancellationToken cancellationToken)
     {
-
+        await _memoPostService.Clear(request.Id, cancellationToken);
     }
 }

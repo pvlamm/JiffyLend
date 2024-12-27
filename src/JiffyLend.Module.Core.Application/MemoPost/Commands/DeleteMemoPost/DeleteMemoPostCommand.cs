@@ -10,12 +10,12 @@ using JiffyLend.Module.Core.Application.Common.Interfaces;
 
 using MediatR;
 
-public class DeleteMemoPostCommand : IRequest<bool>
+public class DeleteMemoPostCommand : IRequest
 {
     public Guid Id { get; set; }
 }
 
-public class DeleteMemoPostCommandHandler : IRequestHandler<DeleteMemoPostCommand, bool>
+public class DeleteMemoPostCommandHandler : IRequestHandler<DeleteMemoPostCommand>
 {
     private readonly IMemoPostService _memoPostService;
     public DeleteMemoPostCommandHandler(IMemoPostService memoPostService)
@@ -23,8 +23,8 @@ public class DeleteMemoPostCommandHandler : IRequestHandler<DeleteMemoPostComman
         _memoPostService = memoPostService;
     }
 
-    public async Task<bool> Handle(DeleteMemoPostCommand request, CancellationToken cancellationToken)
+    public async Task Handle(DeleteMemoPostCommand request, CancellationToken cancellationToken)
     {
-        return await _memoPostService.Delete(request.Id);
+        await _memoPostService.Delete(request.Id, cancellationToken);
     }
 }

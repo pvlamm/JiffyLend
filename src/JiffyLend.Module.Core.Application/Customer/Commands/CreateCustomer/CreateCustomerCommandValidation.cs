@@ -1,15 +1,17 @@
 ﻿namespace JiffyLend.Module.Core.Application.Customer.Commands;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using FluentValidation;
 
+using JiffyLend.Module.Core.Application.Common.Interfaces;
+
 public class CreateCustomerCommandValidation : AbstractValidator<CreateCustomerCommand>
 {
-    public CreateCustomerCommandValidation()
+    public static string ERROR_CUSTOMER_EMAIL_ALREADY_EXISTS = "Customer Email already in use";
+
+    public CreateCustomerCommandValidation(ICustomerService customerService)
     {
+        RuleFor(x => x.EmailAddress)
+            .Must(customerService.EmailExists)
+            .WithMessage(ERROR_CUSTOMER_EMAIL_ALREADY_EXISTS);
     }
 }

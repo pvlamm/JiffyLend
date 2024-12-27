@@ -1,9 +1,9 @@
 ﻿namespace JiffyLend.Module.Core.Application.Customer.Commands;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+
+using JiffyLend.Module.Core.Application.Common.Interfaces;
+using JiffyLend.Module.Core.Application.Common.Models.Mapper;
 
 using MediatR;
 
@@ -17,8 +17,14 @@ public class UpdateCustomerCommand : IRequest
 
 public class UpdateCustomerCommandHandler : IRequestHandler<UpdateCustomerCommand>
 {
-    public Task Handle(UpdateCustomerCommand request, CancellationToken cancellationToken)
+    private readonly ICustomerService _customerService;
+    public UpdateCustomerCommandHandler(ICustomerService customerService)
     {
-        throw new NotImplementedException();
+        _customerService = customerService;
+    }
+
+    public async Task Handle(UpdateCustomerCommand request, CancellationToken cancellationToken)
+    {
+        await _customerService.Update(request.ToCustomer());
     }
 }
