@@ -13,7 +13,7 @@ public class AccountService : IAccountService
 {
     public bool AccountExists(string accountNumber)
     {
-        throw new NotImplementedException();
+        return false;
     }
 
     public bool AccountExists(Guid id)

@@ -30,11 +30,18 @@ public class UpdateCustomerEndpoint : IEndpoint
                 var updateCustomerCommand = command.ToUpdateCustomerCommand();
                 updateCustomerCommand.Id = id;
 
-                await sender
+                var result = await sender
                     .Send(updateCustomerCommand, token);
 
-                return Results.Accepted();
+                return result.IsSuccess switch
+                {
+                    true => Results.Accepted($"customer/{result.Data}", result.Data),
+                    _ => Results.BadRequest(result.Errors)
+                };
 
-            }).WithTags("Customer");
+            })
+            .Produces(StatusCodes.Status202Accepted)
+            .Produces<string[]>(StatusCodes.Status400BadRequest)
+            .WithTags("Customer");
     }
 }

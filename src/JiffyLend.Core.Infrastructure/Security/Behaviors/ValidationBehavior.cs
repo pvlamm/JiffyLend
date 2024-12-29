@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 using FluentValidation;
 
+using JiffyLend.Module.Core.Application.Common.Models;
+
 using MediatR;
 
 public class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
@@ -34,7 +36,28 @@ public class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TReques
                 .ToList();
 
             if (failures.Any())
-                throw new ValidationException(failures);
+            {
+                var code = 400;
+                var message = "Validation error";
+                var errors = failures.Select(err => err.ErrorMessage).ToArray();
+
+                var genericType = typeof(Result<>);
+
+                var resp = typeof(TResponse);
+                var typeArguments = resp.GenericTypeArguments;
+                var specificType = genericType.MakeGenericType(typeArguments);
+
+                return (TResponse)Activator.CreateInstance(specificType, new object[] { errors });
+
+                //var errorObj = new Result<TResponse>(["test", "test"]);
+
+                //var respmore = Activator.CreateInstance(typeof(TResponse));
+
+                //return (TResponse)Activator.CreateInstance(typeof(TResponse), errors);
+                    
+                //Result<TResponse>.Failure(errors);
+                //throw new ValidationException(failures);
+            }
         }
         return await next();
     }

@@ -9,19 +9,19 @@ using JiffyLend.Module.Core.Application.Common.Models.Mapper;
 
 using MediatR;
 
-public class GetCustomerInfoByIdQuery : IRequest<CustomerInfo>
+public class GetCustomerInfoByIdQuery : IRequest<Result<CustomerInfo>>
 {
     public Guid Id { get; set; }
 }
 
-public class GetCustomerInfoByIdQueryHandler : IRequestHandler<GetCustomerInfoByIdQuery, CustomerInfo>
+public class GetCustomerInfoByIdQueryHandler : IRequestHandler<GetCustomerInfoByIdQuery, Result<CustomerInfo>>
 {
     private readonly ICustomerService _customerService;
     public GetCustomerInfoByIdQueryHandler(ICustomerService customerService)
     {
         _customerService = customerService;
     }
-    public async Task<CustomerInfo> Handle(GetCustomerInfoByIdQuery request, CancellationToken cancellationToken)
+    public async Task<Result<CustomerInfo>> Handle(GetCustomerInfoByIdQuery request, CancellationToken cancellationToken)
     {
         var customer = await _customerService
             .GetCustomerById(request.Id, cancellationToken);

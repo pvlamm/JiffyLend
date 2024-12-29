@@ -28,7 +28,7 @@ public class CustomerService : ICustomerService
 
     public bool Exists(Guid id)
     {
-        throw new NotImplementedException();
+        return false;
     }
 
     public Task<Customer> GetCustomerByEmailAddress(string emailAddress, CancellationToken token = default)

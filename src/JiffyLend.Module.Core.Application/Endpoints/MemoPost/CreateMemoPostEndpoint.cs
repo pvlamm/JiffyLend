@@ -31,8 +31,15 @@ public class CreateMemoPostEndpoint : IEndpoint
                 var result = await sender
                     .Send(createMemoPostCommand, token);
 
-                return Results.Created($"memo-post/{result}",result);
+                return result.IsSuccess switch
+                {
+                    true => Results.Created($"memo-post/{result.Data}", result.Data),
+                    _ => Results.BadRequest(result.Errors)
+                };
 
-            }).WithTags("Memo-Post");
+            })
+            .Produces<Guid>(StatusCodes.Status201Created)
+            .Produces<string[]>(StatusCodes.Status400BadRequest)
+            .WithTags("Memo-Post");
     }
 }

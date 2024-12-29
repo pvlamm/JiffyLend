@@ -8,12 +8,12 @@ using JiffyLend.Module.Core.Application.Common.Models.Mapper;
 
 using MediatR;
 
-public class GetAccountInfoByIdQuery : IRequest<AccountInfo>
+public class GetAccountInfoByIdQuery : IRequest<Result<AccountInfo>>
 {
     public Guid Id { get; set; }
 }
 
-public class GetAccountInfoQueryHandler : IRequestHandler<GetAccountInfoByIdQuery, AccountInfo>
+public class GetAccountInfoQueryHandler : IRequestHandler<GetAccountInfoByIdQuery, Result<AccountInfo>>
 {
     private readonly IAccountService _accountService;
     public GetAccountInfoQueryHandler(IAccountService accountService)
@@ -21,7 +21,7 @@ public class GetAccountInfoQueryHandler : IRequestHandler<GetAccountInfoByIdQuer
         _accountService = accountService;
     }
 
-    public async Task<AccountInfo> Handle(GetAccountInfoByIdQuery request, CancellationToken cancellationToken)
+    public async Task<Result<AccountInfo>> Handle(GetAccountInfoByIdQuery request, CancellationToken cancellationToken)
     {
         var account = await _accountService.GetAccountById(request.Id, cancellationToken);
 

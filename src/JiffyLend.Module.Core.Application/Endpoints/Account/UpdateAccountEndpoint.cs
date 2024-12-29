@@ -23,8 +23,17 @@ public class UpdateAccountEndpoint : IEndpoint
                 var updateAccountCommand = updateAccount.ToUpdateAccountCommand();
                 updateAccountCommand.Id = id;
 
-                await sender.Send(updateAccountCommand, token);
+                var result = await sender.Send(updateAccountCommand, token);
 
-            }).WithTags("Account");
+                return result.IsSuccess switch
+                {
+                    true => Results.Accepted(),
+                    _ => Results.BadRequest(result.Errors)
+                };
+
+            })
+            .Produces(StatusCodes.Status202Accepted)
+            .Produces<string[]>(StatusCodes.Status400BadRequest)
+            .WithTags("Account");
     }
 }

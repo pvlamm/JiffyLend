@@ -19,8 +19,16 @@ public class CreateCustomerEndpoint : IEndpoint
             var result = await sender
                 .Send(command.ToCreateCustomerCommand(), token);
 
-            return Results.Created($"customer/{result}", result);
+            return result.IsSuccess switch
+            {
+                true => Results.Created($"customer/{result.Data}", result.Data),
+                _ => Results.BadRequest(result.Errors)
+            };
 
-        }).WithTags("Customer");
+
+        })
+        .Produces<Guid>(StatusCodes.Status201Created)
+        .Produces<string[]>(StatusCodes.Status400BadRequest)
+        .WithTags("Customer");
     }
 }

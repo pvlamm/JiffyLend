@@ -16,11 +16,18 @@ public class CreateAccountEndpoint : IEndpoint
     {
         app.MapPost("account", async (CreateAccount account, ISender sender, CancellationToken token) =>
         {
-            var id = await sender
+            var result = await sender
                 .Send(account.ToCreateAccountCommand(), token);
 
-            return Results.Created($"account/{id}", id);
+            return result.IsSuccess switch
+            {
+                true => Results.Created($"account/{result.Data}", result.Data),
+                _ => Results.BadRequest(result.Errors)
+            };
 
-        }).WithTags("Account");
+
+        }).Produces<Guid>(StatusCodes.Status201Created)
+            .Produces<string[]>(StatusCodes.Status400BadRequest)
+            .WithTags("Account");
     }
 }

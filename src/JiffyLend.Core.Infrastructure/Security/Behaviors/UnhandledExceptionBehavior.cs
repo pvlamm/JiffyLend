@@ -26,7 +26,7 @@ public class UnhandledExceptionBehavior<TRequest, TResponse> : IPipelineBehavior
         {
             var requestName = typeof(TRequest).Name;
 
-            _logger.LogError(ex, "CleanArchitecture Request: Unhandled Exception for Request {Name} {@Request}", requestName, request);
+            _logger.LogError(ex, "JiffyLend Request: Unhandled Exception for Request {Name} {@Request}", requestName, request);
 
             throw;
         }

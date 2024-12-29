@@ -19,11 +19,17 @@ public class DeleteMemoPostEndpoint : IEndpoint
             ISender sender, 
             CancellationToken token) => {
 
-            await sender
+            var result = await sender
                 .Send(new DeleteMemoPostCommand { Id = id }, token);
 
-            return Results.Accepted();
-
-        }).WithTags("Memo-Post");
+                return result.IsSuccess switch
+                {
+                    true => Results.Ok(),
+                    _ => Results.BadRequest(result.Errors)
+                };
+            })
+            .Produces(StatusCodes.Status200OK)
+            .Produces<string[]>(StatusCodes.Status400BadRequest)
+            .WithTags("Memo-Post");
     }
 }
