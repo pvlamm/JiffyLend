@@ -1,9 +1,4 @@
 ﻿namespace JiffyLend.Module.Core.Application.MemoPost.Commands;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using FluentValidation;
 
@@ -13,6 +8,7 @@ public class DeleteMemoPostCommandValidator : AbstractValidator<DeleteMemoPostCo
 {
     public static string ERROR_MEMOPOST_ID_NOT_FOUND = "MemoPost Not Found";
     public static string ERROR_MEMOPOST_CANNOT_DELETE = "MemoPost Cannot be Deleted";
+
     public DeleteMemoPostCommandValidator(IMemoPostService memoPostService)
     {
         RuleFor(x => x.Id)

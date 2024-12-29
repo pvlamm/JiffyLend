@@ -24,8 +24,6 @@ public class CreateCustomerEndpoint : IEndpoint
                 true => Results.Created($"customer/{result.Data}", result.Data),
                 _ => Results.BadRequest(result.Errors)
             };
-
-
         })
         .Produces<Guid>(StatusCodes.Status201Created)
         .Produces<string[]>(StatusCodes.Status400BadRequest)

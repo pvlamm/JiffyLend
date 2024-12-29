@@ -1,4 +1,5 @@
 ﻿namespace JiffyLend.Module.Core.Application.MemoPost.Commands.CreateMemoPost;
+
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -19,6 +20,7 @@ public class CreateMemoPostCommand : IRequest<Result<Guid>>
 public class CreateMemoPostCommandHandler : IRequestHandler<CreateMemoPostCommand, Result<Guid>>
 {
     private readonly IMemoPostService _memoPostService;
+
     public CreateMemoPostCommandHandler(IMemoPostService memoPostService)
     {
         _memoPostService = memoPostService;

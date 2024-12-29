@@ -1,4 +1,5 @@
 ﻿namespace JiffyLend.Module.Core.Application.Customer.Commands;
+
 using System;
 
 using JiffyLend.Module.Core.Application.Common.Interfaces;
@@ -18,6 +19,7 @@ public class CreateCustomerCommand : IRequest<Result<Guid>>
 public class CreateCustomerCommandHanlder : IRequestHandler<CreateCustomerCommand, Result<Guid>>
 {
     private readonly ICustomerService _customerService;
+
     public CreateCustomerCommandHanlder(ICustomerService customerService)
     {
         _customerService = customerService;

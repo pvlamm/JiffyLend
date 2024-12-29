@@ -54,7 +54,7 @@ public class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TReques
                 //var respmore = Activator.CreateInstance(typeof(TResponse));
 
                 //return (TResponse)Activator.CreateInstance(typeof(TResponse), errors);
-                    
+
                 //Result<TResponse>.Failure(errors);
                 //throw new ValidationException(failures);
             }

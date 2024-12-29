@@ -1,9 +1,6 @@
 ﻿namespace JiffyLend.Module.Core.Application.Endpoints.Customer;
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using JiffyLend.Core.Interfaces;
 using JiffyLend.Module.Core.Application.Common.Models;
@@ -20,7 +17,7 @@ public class UpdateCustomerEndpoint : IEndpoint
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
         app.MapPut("customer/{id:guid}",
-            async (Guid id, 
+            async (Guid id,
             UpdateCustomer command,
             ISender sender,
             CancellationToken token) =>
@@ -38,7 +35,6 @@ public class UpdateCustomerEndpoint : IEndpoint
                     true => Results.Accepted($"customer/{result.Data}", result.Data),
                     _ => Results.BadRequest(result.Errors)
                 };
-
             })
             .Produces(StatusCodes.Status202Accepted)
             .Produces<string[]>(StatusCodes.Status400BadRequest)

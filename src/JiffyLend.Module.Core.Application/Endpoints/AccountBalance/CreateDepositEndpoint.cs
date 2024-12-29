@@ -1,4 +1,5 @@
 ﻿namespace JiffyLend.Module.Core.Application.Endpoints.AccountBalance;
+
 using System;
 
 using JiffyLend.Core.Interfaces;
@@ -9,7 +10,6 @@ using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
-
 
 public class CreateDepositEndpoint : IEndpoint
 {
@@ -23,7 +23,6 @@ public class CreateDepositEndpoint : IEndpoint
             //var createDepositCommand = createDeposit.ToCreateDepositCommand();
             //createDepositCommand.AccountId = id;
             //await sender.Send(createDepositCommand, token);
-
         }).WithTags("AccountBalance");
     }
 }

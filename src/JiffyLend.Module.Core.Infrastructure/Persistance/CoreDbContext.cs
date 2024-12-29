@@ -4,15 +4,17 @@ using System.Data;
 using System.Reflection;
 using System.Threading.Tasks;
 
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage;
-
 using JiffyLend.Module.Core.Application.Common.Interfaces;
 using JiffyLend.Module.Core.Domain.Entities;
 
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
+
 public class CoreDbContext : DbContext, ICoreDbContext
 {
-    public CoreDbContext(DbContextOptions<CoreDbContext> options) : base(options) { }
+    public CoreDbContext(DbContextOptions<CoreDbContext> options) : base(options)
+    {
+    }
 
     public DbSet<Account> Accounts => Set<Account>();
 
@@ -77,6 +79,7 @@ public class CoreDbContext : DbContext, ICoreDbContext
             }
         }
     }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);

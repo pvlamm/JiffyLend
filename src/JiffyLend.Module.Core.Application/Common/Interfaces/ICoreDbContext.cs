@@ -1,4 +1,5 @@
 ﻿namespace JiffyLend.Module.Core.Application.Common.Interfaces;
+
 using System.Threading.Tasks;
 
 using JiffyLend.Module.Core.Domain.Entities;
@@ -13,7 +14,10 @@ public interface ICoreDbContext
     DbSet<MemoPost> MemoPosts { get; }
 
     Task BeginTransactionAsync();
+
     Task CommitTransactionAsync();
+
     void RollbackTransaction();
+
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

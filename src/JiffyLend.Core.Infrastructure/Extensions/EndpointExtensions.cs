@@ -1,13 +1,13 @@
 ﻿namespace JiffyLend.Core.Infrastructure.Extensions;
 
+using System.Reflection;
+
 using JiffyLend.Core.Interfaces;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-
-using System.Reflection;
 
 public static class EndpointExtensions
 {

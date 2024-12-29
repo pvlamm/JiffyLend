@@ -24,8 +24,6 @@ public class CreateAccountEndpoint : IEndpoint
                 true => Results.Created($"account/{result.Data}", result.Data),
                 _ => Results.BadRequest(result.Errors)
             };
-
-
         }).Produces<Guid>(StatusCodes.Status201Created)
             .Produces<string[]>(StatusCodes.Status400BadRequest)
             .WithTags("Account");

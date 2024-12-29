@@ -8,7 +8,6 @@ using MediatR.Pipeline;
 
 using Microsoft.Extensions.Logging;
 
-
 public class LoggingBehavior<TRequest> : IRequestPreProcessor<TRequest> where TRequest : notnull
 {
     private readonly ILogger _logger;

@@ -1,4 +1,5 @@
 ﻿namespace JiffyLend.Module.Core.Application.Endpoints.MemoPost;
+
 using System;
 
 using JiffyLend.Core.Interfaces;
@@ -22,13 +23,11 @@ public class ClearMemoPostEndpoint : IEndpoint
                 var result = await sender
                     .Send(new ClearMemoPostCommand { Id = id }, token);
 
-
                 return result.IsSuccess switch
                 {
                     true => Results.Accepted(),
                     _ => Results.BadRequest(result.Errors)
                 };
-
             })
             .Produces(StatusCodes.Status202Accepted)
             .Produces<string[]>(StatusCodes.Status400BadRequest)

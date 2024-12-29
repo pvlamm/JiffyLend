@@ -1,4 +1,5 @@
 ﻿namespace JiffyLend.Module.Core.Application.Common.Models;
+
 using System;
 
 public class CreateCustomer

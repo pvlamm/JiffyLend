@@ -18,6 +18,7 @@ public class CreateAccountCommand : IRequest<Result<Guid>>
 public class CreateAccountCommandHandler : IRequestHandler<CreateAccountCommand, Result<Guid>>
 {
     private readonly IAccountService _accountService;
+
     public CreateAccountCommandHandler(IAccountService accountService)
     {
         IAccountService _accountService = accountService;

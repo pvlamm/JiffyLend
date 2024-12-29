@@ -1,15 +1,11 @@
 ﻿namespace JiffyLend.Core.Infrastructure.Security.Behaviors;
-using System;
-using System.Collections.Generic;
+
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 using JiffyLend.Core.Infrastructure.Interfaces;
 
 using MediatR;
-using MediatR.Pipeline;
 
 using Microsoft.Extensions.Logging;
 

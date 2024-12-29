@@ -13,7 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
 
 builder.Services.AddCoreInfrastructure();
-builder.Services.AddModuleCoreServices();
+builder.Services.AddModuleCoreApplication();
 builder.Services.AddModuleCoreInfrastructure(builder.Configuration);
 
 builder.Services.AddCors(options =>
@@ -33,8 +33,8 @@ if (app.Environment.IsDevelopment())
 {
     app.UseCors();
     app.MapOpenApi();
-    app.MapScalarApiReference(options => {
-
+    app.MapScalarApiReference(options =>
+    {
         options
             .WithTitle("JiffyLend WebAPI")
             .WithTheme(ScalarTheme.Kepler)

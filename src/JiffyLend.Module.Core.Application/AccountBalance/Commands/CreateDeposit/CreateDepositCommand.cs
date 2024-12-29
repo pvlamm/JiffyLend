@@ -1,4 +1,5 @@
 ﻿namespace JiffyLend.Module.Core.Application.AccountBalance.Commands;
+
 using System;
 
 public class CreateDepositCommand

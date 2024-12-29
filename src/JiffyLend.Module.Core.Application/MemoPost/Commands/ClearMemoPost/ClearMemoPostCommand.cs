@@ -1,4 +1,5 @@
 ﻿namespace JiffyLend.Module.Core.Application.MemoPost.Commands;
+
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ public class ClearMemoPostCommand : IRequest<Result<bool>>
 public class ClearMemoPostCommandHandler : IRequestHandler<ClearMemoPostCommand, Result<bool>>
 {
     private readonly IMemoPostService _memoPostService;
+
     public ClearMemoPostCommandHandler(IMemoPostService memoPostService)
     {
         _memoPostService = memoPostService;

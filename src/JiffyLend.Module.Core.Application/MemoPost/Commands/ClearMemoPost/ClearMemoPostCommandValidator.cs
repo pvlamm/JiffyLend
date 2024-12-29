@@ -13,6 +13,5 @@ public class ClearMemoPostCommandValidator : AbstractValidator<ClearMemoPostComm
         RuleFor(x => x.Id)
             .Must(memoPostService.CanClear)
             .WithMessage(ERROR_MEMO_POST_CANNOT_CLEAR);
-
     }
 }

@@ -1,4 +1,5 @@
 ﻿namespace JiffyLend.Module.Core.Domain.Entities;
+
 using System;
 
 public record MemoPost

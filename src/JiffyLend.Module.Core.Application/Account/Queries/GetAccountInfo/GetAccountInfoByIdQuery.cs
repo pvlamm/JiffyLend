@@ -1,4 +1,5 @@
 ﻿namespace JiffyLend.Module.Core.Application.Account.Queries;
+
 using System;
 using System.Threading.Tasks;
 
@@ -16,6 +17,7 @@ public class GetAccountInfoByIdQuery : IRequest<Result<AccountInfo>>
 public class GetAccountInfoQueryHandler : IRequestHandler<GetAccountInfoByIdQuery, Result<AccountInfo>>
 {
     private readonly IAccountService _accountService;
+
     public GetAccountInfoQueryHandler(IAccountService accountService)
     {
         _accountService = accountService;

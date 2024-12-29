@@ -28,7 +28,8 @@ public static class DependencyInjection
     .ToArray();
 
         services.AddValidatorsFromAssemblies(assemblies);
-        services.AddMediatR(cfg => {
+        services.AddMediatR(cfg =>
+        {
             cfg.RegisterServicesFromAssemblies(assemblies);
             //cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<>));
             cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(UnhandledExceptionBehavior<,>));
@@ -45,7 +46,7 @@ public static class DependencyInjection
 
 /// <summary>
 /// This is a glorified Testing Experiment
-/// So we are hard setting this because shorterm, 
+/// So we are hard setting this because shorterm,
 /// we are ignoring Security Concerns
 /// </summary>
 public class User : IUser

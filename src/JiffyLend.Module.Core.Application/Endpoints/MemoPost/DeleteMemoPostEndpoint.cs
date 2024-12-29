@@ -1,4 +1,5 @@
 ﻿namespace JiffyLend.Module.Core.Application.Endpoints.MemoPost;
+
 using System;
 
 using JiffyLend.Core.Interfaces;
@@ -14,13 +15,13 @@ public class DeleteMemoPostEndpoint : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
-        app.MapDelete("memo-post/{id:guid}", 
-            async (Guid id, 
-            ISender sender, 
-            CancellationToken token) => {
-
-            var result = await sender
-                .Send(new DeleteMemoPostCommand { Id = id }, token);
+        app.MapDelete("memo-post/{id:guid}",
+            async (Guid id,
+            ISender sender,
+            CancellationToken token) =>
+            {
+                var result = await sender
+                    .Send(new DeleteMemoPostCommand { Id = id }, token);
 
                 return result.IsSuccess switch
                 {

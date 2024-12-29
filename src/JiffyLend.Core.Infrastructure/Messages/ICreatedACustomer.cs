@@ -1,4 +1,5 @@
 ﻿namespace JiffyLend.Core.Infrastructure.Messages;
+
 using System;
 
 public interface ICreatedACustomer

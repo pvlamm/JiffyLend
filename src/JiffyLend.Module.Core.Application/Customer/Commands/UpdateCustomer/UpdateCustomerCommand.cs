@@ -1,4 +1,5 @@
 ﻿namespace JiffyLend.Module.Core.Application.Customer.Commands;
+
 using System;
 using System.Threading.Tasks;
 
@@ -19,6 +20,7 @@ public class UpdateCustomerCommand : IRequest<Result<bool>>
 public class UpdateCustomerCommandHandler : IRequestHandler<UpdateCustomerCommand, Result<bool>>
 {
     private readonly ICustomerService _customerService;
+
     public UpdateCustomerCommandHandler(ICustomerService customerService)
     {
         _customerService = customerService;

@@ -1,4 +1,5 @@
 ﻿namespace JiffyLend.Module.Core.Application.Common.Models;
+
 public class Result<TValue>
 {
     public bool IsSuccess { get; init; }
@@ -23,11 +24,13 @@ public class Result<TValue>
 
     public static Result<TValue> Success(TValue data)
         => new(data);
+
     public static Result<TValue> Failure(string[] errors)
         => new(errors);
 
     public static implicit operator Result<TValue>(TValue data)
         => new(data);
+
     public static implicit operator Result<TValue>(string[] errors)
         => new(errors);
 

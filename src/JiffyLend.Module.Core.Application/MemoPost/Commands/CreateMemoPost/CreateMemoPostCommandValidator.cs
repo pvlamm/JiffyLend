@@ -9,7 +9,7 @@ public class CreateMemoPostCommandValidator : AbstractValidator<CreateMemoPostCo
     public static string ERROR_ACCOUNT_DOES_NOT_EXIST = "Account does not exist";
     public static string ERROR_INSUFFICIENT_FUNDS = "Insufficient Funds";
 
-    public CreateMemoPostCommandValidator(IAccountService accountService, 
+    public CreateMemoPostCommandValidator(IAccountService accountService,
         IMemoPostService memoPostService)
     {
         RuleFor(x => x)

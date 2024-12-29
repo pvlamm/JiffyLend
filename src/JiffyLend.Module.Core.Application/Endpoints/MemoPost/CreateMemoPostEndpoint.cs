@@ -1,9 +1,6 @@
 ﻿namespace JiffyLend.Module.Core.Application.Endpoints.MemoPost;
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using JiffyLend.Core.Interfaces;
 using JiffyLend.Module.Core.Application.Common.Models;
@@ -25,7 +22,7 @@ public class CreateMemoPostEndpoint : IEndpoint
             CancellationToken token) =>
             {
                 MemoPostMapper mapper = new MemoPostMapper();
-                var createMemoPostCommand = 
+                var createMemoPostCommand =
                     mapper.ToCreateMemoPostCommand(command);
 
                 var result = await sender
@@ -36,7 +33,6 @@ public class CreateMemoPostEndpoint : IEndpoint
                     true => Results.Created($"memo-post/{result.Data}", result.Data),
                     _ => Results.BadRequest(result.Errors)
                 };
-
             })
             .Produces<Guid>(StatusCodes.Status201Created)
             .Produces<string[]>(StatusCodes.Status400BadRequest)

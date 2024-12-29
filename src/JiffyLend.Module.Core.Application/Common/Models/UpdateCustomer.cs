@@ -1,4 +1,5 @@
 ﻿namespace JiffyLend.Module.Core.Application.Common.Models;
+
 public class UpdateCustomer
 {
     public virtual string FirstName { get; set; }

@@ -1,4 +1,5 @@
 ﻿namespace JiffyLend.Module.Core.Domain.Entities;
+
 using System;
 
 using JiffyLend.Module.Core.Domain.Enums;
@@ -13,5 +14,4 @@ public record AccountActivity
     public DepositTypes DepositType { get; set; }
     public string ReferenceNumber { get; set; }
     public long Amount { get; set; } = 0;
-    
 }

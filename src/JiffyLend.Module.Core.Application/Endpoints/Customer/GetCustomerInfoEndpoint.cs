@@ -1,4 +1,5 @@
 ﻿namespace JiffyLend.Module.Core.Application.Endpoints.Customer;
+
 using System;
 
 using JiffyLend.Core.Interfaces;
@@ -11,14 +12,12 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 
-using static MassTransit.ValidationResultExtensions;
-
 public class GetCustomerInfoEndpoint : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
-        app.MapGet("customer/{id:guid}", async (Guid id, ISender sender, CancellationToken token) => {
-
+        app.MapGet("customer/{id:guid}", async (Guid id, ISender sender, CancellationToken token) =>
+        {
             var result = await sender
                 .Send(new GetCustomerInfoByIdQuery { Id = id }, token);
 
