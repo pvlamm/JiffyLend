@@ -10,6 +10,7 @@ public record MemoPost
     public DateTime ExpiresAt { get; set; }
     public DateTime? CompleteDate { get; set; }
     public DateTime? CancelDate { get; set; }
+    public string ReferenceNumber { get; set; }
     public string Description { get; set; }
     public long Amount { get; set; }
 }

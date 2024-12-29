@@ -1,4 +1,4 @@
-﻿namespace JiffyLend.Module.Core.Infrastructure.Persistance;
+﻿namespace JiffyLend.Module.Core.Infrastructure.Persistence;
 
 using System.Data;
 using System.Reflection;

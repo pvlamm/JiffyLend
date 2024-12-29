@@ -1,4 +1,4 @@
-﻿namespace JiffyLend.Module.Core.Infrastructure.Persistance.Configurations;
+﻿namespace JiffyLend.Module.Core.Infrastructure.Persistence.Configurations;
 
 using JiffyLend.Module.Core.Domain.Entities;
 
@@ -16,6 +16,9 @@ public class MemoPostConfiguration : IEntityTypeConfiguration<MemoPost>
         builder.Property(x => x.ExpiresAt);
         builder.Property(x => x.CompleteDate);
         builder.Property(x => x.CancelDate);
+        builder.Property(x => x.ReferenceNumber)
+            .HasMaxLength(16)
+            .IsRequired();
         builder.Property(x => x.Description)
             .HasMaxLength(500)
             .IsRequired();

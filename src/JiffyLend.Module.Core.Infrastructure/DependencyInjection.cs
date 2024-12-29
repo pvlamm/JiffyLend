@@ -1,7 +1,7 @@
 ﻿namespace JiffyLend.Module.Core.Infrastructure;
 
 using JiffyLend.Module.Core.Application.Common.Interfaces;
-using JiffyLend.Module.Core.Infrastructure.Persistance;
+using JiffyLend.Module.Core.Infrastructure.Persistence;
 using JiffyLend.Module.Core.Infrastructure.Services;
 
 using Microsoft.EntityFrameworkCore;

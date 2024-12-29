@@ -1,4 +1,4 @@
-﻿namespace JiffyLend.Module.Core.Infrastructure.Persistance.Configurations;
+﻿namespace JiffyLend.Module.Core.Infrastructure.Persistence.Configurations;
 
 using JiffyLend.Module.Core.Domain.Entities;
 
