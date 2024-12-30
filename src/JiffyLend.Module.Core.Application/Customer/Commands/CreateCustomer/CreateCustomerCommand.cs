@@ -2,9 +2,12 @@
 
 using System;
 
+using JiffyLend.Core.Infrastructure.Messages;
 using JiffyLend.Module.Core.Application.Common.Interfaces;
 using JiffyLend.Module.Core.Application.Common.Models;
 using JiffyLend.Module.Core.Application.Common.Models.Mapper;
+
+using MassTransit;
 
 using MediatR;
 
@@ -19,14 +22,24 @@ public class CreateCustomerCommand : IRequest<Result<Guid>>
 public class CreateCustomerCommandHanlder : IRequestHandler<CreateCustomerCommand, Result<Guid>>
 {
     private readonly ICustomerService _customerService;
-
-    public CreateCustomerCommandHanlder(ICustomerService customerService)
+    private readonly IPublishEndpoint _publish;
+    public CreateCustomerCommandHanlder(ICustomerService customerService, IPublishEndpoint publish)
     {
         _customerService = customerService;
+        _publish = publish;
     }
 
     public async Task<Result<Guid>> Handle(CreateCustomerCommand request, CancellationToken cancellationToken)
     {
-        return await _customerService.Create(request.ToCustomer(), cancellationToken);
+        var customer = request.ToCustomer();
+        await _customerService.Create(customer, cancellationToken);
+        await _publish.Publish<ICreatedACustomer>(new
+        {
+            customer.Id,
+            DisplayName = $"{customer.FirstName} {customer.LastName}",
+            ChangeDate = customer.CreateDate
+        }, cancellationToken);
+
+        return customer.Id;
     }
 }

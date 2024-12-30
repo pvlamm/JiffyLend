@@ -10,8 +10,11 @@ using JiffyLend.Core.Common.Interfaces;
 using JiffyLend.Core.Infrastructure.Interfaces;
 using JiffyLend.Core.Infrastructure.Security.Behaviors;
 
+using MassTransit;
+
 using MediatR;
 
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 /// <summary>
@@ -20,12 +23,18 @@ using Microsoft.Extensions.DependencyInjection;
 /// </summary>
 public static class DependencyInjection
 {
-    public static IServiceCollection AddCoreInfrastructure(this IServiceCollection services)
+    public static IServiceCollection AddCoreInfrastructure(this IServiceCollection services,
+        IConfiguration configuration)
     {
         Assembly[] assemblies = AppDomain.CurrentDomain
-    .GetAssemblies()
-    .Where(a => a.FullName.Contains("Application"))
-    .ToArray();
+            .GetAssemblies()
+            .Where(a => a.FullName.Contains("Application"))
+            .ToArray();
+
+        Assembly[] infrastructure = AppDomain.CurrentDomain
+            .GetAssemblies()
+            .Where(a => a.FullName.Contains("Infrastructure"))
+            .ToArray();
 
         services.AddValidatorsFromAssemblies(assemblies);
         services.AddMediatR(cfg =>
@@ -36,6 +45,34 @@ public static class DependencyInjection
             cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
             cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(PerformanceBehavior<,>));
         });
+
+
+        services.AddMassTransit(mt =>
+        {
+
+            // Have to have an entry for each module - Consumers SHOULD be in Infrastructure
+            // Publishers SHOULD be in Application and/or Infrastrucure=>Services
+            mt.AddConsumers(infrastructure);
+
+            mt.UsingRabbitMq((context, cfg) =>
+            {
+                // 127.0.0.1:5500
+                cfg.Host("127.0.0.1", 5600, "/", h =>
+                {
+                    h.Username("guest");
+                    h.Password("guest");
+                });
+                cfg.Host(configuration["RabbitMQ:HostName"], "/", h =>
+                {
+                    h.Username(configuration["RabbitMQ:Username"]);
+                    h.Password(configuration["RabbitMQ:Password"]);
+                });
+
+                cfg.ConfigureEndpoints(context);
+            });
+
+        });
+
 
         services.AddSingleton<IDateTime, JiffyTime>();
         services.AddTransient<IUser, User>();

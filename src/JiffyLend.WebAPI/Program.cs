@@ -12,7 +12,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
 
-builder.Services.AddCoreInfrastructure();
+builder.Services.AddCoreInfrastructure(builder.Configuration);
+
 builder.Services.AddModuleCoreApplication();
 builder.Services.AddModuleCoreInfrastructure(builder.Configuration);
 

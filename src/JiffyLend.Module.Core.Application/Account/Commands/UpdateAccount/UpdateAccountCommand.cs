@@ -2,9 +2,12 @@
 
 using System;
 
+using JiffyLend.Core.Infrastructure.Messages;
 using JiffyLend.Module.Core.Application.Common.Interfaces;
 using JiffyLend.Module.Core.Application.Common.Models;
 using JiffyLend.Module.Core.Application.Common.Models.Mapper;
+
+using MassTransit;
 
 using MediatR;
 
@@ -17,15 +20,23 @@ public class UpdateAccountCommand : IRequest<Result<bool>>
 public class UpdateAccountCommandHandler : IRequestHandler<UpdateAccountCommand, Result<bool>>
 {
     private readonly IAccountService _accountService;
-
-    public UpdateAccountCommandHandler(IAccountService accountService)
+    private readonly IPublishEndpoint _publish;
+    public UpdateAccountCommandHandler(IAccountService accountService, IPublishEndpoint publish)
     {
         _accountService = accountService;
+        _publish = publish;
     }
 
     public async Task<Result<bool>> Handle(UpdateAccountCommand request, CancellationToken cancellationToken)
     {
-        await _accountService.Update(request.ToAccount(), cancellationToken);
+        var account = request.ToAccount();
+        await _accountService.Update(account, cancellationToken);
+        await _publish.Publish<IUpdatedAnAccount>(new
+        {
+            request.Id,
+            DisplayName = account.Title,
+            ChangeDate = account.UpdateDate
+        }, cancellationToken);
 
         return true;
     }
