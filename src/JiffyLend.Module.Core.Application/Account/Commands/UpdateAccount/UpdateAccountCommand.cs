@@ -29,7 +29,10 @@ public class UpdateAccountCommandHandler : IRequestHandler<UpdateAccountCommand,
 
     public async Task<Result<bool>> Handle(UpdateAccountCommand request, CancellationToken cancellationToken)
     {
-        var account = request.ToAccount();
+        var account = await _accountService.GetAccountById(request.Id);
+
+        account.Title = request.Title;
+
         await _accountService.Update(account, cancellationToken);
         await _publish.Publish<IUpdatedAnAccount>(new
         {
