@@ -11,6 +11,8 @@ public interface IAccountService
 
     bool AccountExists(Guid id);
 
+    bool HasAvailableFunds(string accountNumber, long amount);
+
     bool HasAvailableFunds(Guid id, long amount);
 
     Task<Account> GetAccountAccountNumber(string accountNumber, CancellationToken token = default);

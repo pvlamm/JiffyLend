@@ -55,6 +55,15 @@ public class AccountService : IAccountService
         return await _context.Accounts.SingleAsync(x => x.Id == id, token);
     }
 
+    public bool HasAvailableFunds(string accountNumber, long amount)
+    {
+        var account = _context.Accounts
+            .Select(x => new { x.Id, x.AccountNumber })
+            .Single(x => x.AccountNumber == accountNumber);
+
+        return HasAvailableFunds(account.Id, amount);
+    }
+
     public bool HasAvailableFunds(Guid id, long amount)
     {
         var currentPendingAmount = _context.MemoPosts
