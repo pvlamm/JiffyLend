@@ -7,40 +7,55 @@ using System.Threading.Tasks;
 using JiffyLend.Module.Core.Application.Common.Interfaces;
 using JiffyLend.Module.Core.Domain.Entities;
 
+using Microsoft.EntityFrameworkCore;
+
 public class CustomerService : ICustomerService
 {
-    public Task<Guid> Create(Customer customer, CancellationToken token = default)
+    private readonly ICoreDbContext _context;
+
+    public CustomerService(ICoreDbContext context)
     {
-        throw new NotImplementedException();
+        _context = context;
     }
 
-    public Task<bool> Delete(Guid id, CancellationToken token = default)
+    public async Task<Guid> Create(Customer customer, CancellationToken token = default)
+    {
+        await _context.AccountCustomers.AddAsync(customer, token);
+        await _context.SaveChangesAsync(token);
+
+        return customer.Id;
+    }
+
+    public Task Delete(Guid id, CancellationToken token = default)
     {
         throw new NotImplementedException();
     }
 
     public bool EmailExists(string email)
     {
-        throw new NotImplementedException();
+        return _context.AccountCustomers.Any(x => x.EmailAddress == email);
     }
 
     public bool Exists(Guid id)
     {
-        return false;
+        return _context.AccountCustomers.Any(x => x.Id == id);
     }
 
-    public Task<Customer> GetCustomerByEmailAddress(string emailAddress, CancellationToken token = default)
+    public async Task<Customer> GetCustomerByEmailAddress(string emailAddress, CancellationToken token = default)
     {
-        throw new NotImplementedException();
+        return await _context.AccountCustomers
+            .SingleAsync(x => x.EmailAddress == emailAddress, token);
     }
 
-    public Task<Customer> GetCustomerById(Guid id, CancellationToken token = default)
+    public async Task<Customer> GetCustomerById(Guid id, CancellationToken token = default)
     {
-        throw new NotImplementedException();
+        return await _context.AccountCustomers
+            .SingleAsync(x => x.Id == id, token);
     }
 
-    public Task<bool> Update(Customer customer, CancellationToken token = default)
+    public async Task Update(Customer customer, CancellationToken token = default)
     {
-        throw new NotImplementedException();
+        _context.AccountCustomers.Attach(customer);
+        await _context.SaveChangesAsync(token);
     }
 }

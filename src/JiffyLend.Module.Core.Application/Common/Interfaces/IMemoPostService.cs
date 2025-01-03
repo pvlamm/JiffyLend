@@ -15,7 +15,7 @@ public interface IMemoPostService
 
     Task<Guid> Create(MemoPost memoPost, CancellationToken token = default);
 
-    Task<bool> Delete(Guid id, CancellationToken token = default);
+    Task Delete(Guid id, CancellationToken token = default);
 
-    Task<bool> Clear(Guid id, CancellationToken token = default);
+    Task Clear(Guid id, CancellationToken token = default);
 }
