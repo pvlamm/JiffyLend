@@ -1,10 +1,14 @@
 ﻿namespace JiffyLend.Module.Core.Application;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-internal class DependencyInjection
+using JiffyLend.Core.Infrastructure.Extensions;
+
+using Microsoft.Extensions.DependencyInjection;
+
+public static class DependencyInjection
 {
+    public static IServiceCollection AddModuleCoreApplication(this IServiceCollection services)
+    {
+        services.AddEndpoints(typeof(DependencyInjection).Assembly);
+        return services;
+    }
 }
