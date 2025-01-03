@@ -1,33 +1,24 @@
-﻿namespace JiffyLend.Module.Core.Infrastructure.Persistence;
+﻿namespace JiffyLend.Module.Card.Infrastructure.Persistence;
 
 using System.Data;
 using System.Reflection;
 using System.Threading.Tasks;
 
-using JiffyLend.Module.Core.Application.Common.Interfaces;
-using JiffyLend.Module.Core.Domain.Entities;
+using JiffyLend.Module.Card.Application.Common.Interfaces;
+using JiffyLend.Module.Card.Domain.Entities;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 
-public class CoreDbContext : DbContext, ICoreDbContext
+public class CardDbContext : DbContext, ICardDbContext
 {
-    public CoreDbContext(DbContextOptions<CoreDbContext> options) : base(options)
-    {
-    }
-
     public DbSet<Account> Accounts => Set<Account>();
 
-    public DbSet<AccountActivity> AccountActivities => Set<AccountActivity>();
+    public DbSet<Card> Cards => Set<Card>();
 
-    public DbSet<Customer> AccountCustomers => Set<Customer>();
+    public DbSet<Cardholder> Cardholders => Set<Cardholder>();
 
-    public DbSet<MemoPost> MemoPosts => Set<MemoPost>();
-
-    public Task<int> SaveChangesAsync(CancellationToken cancellationToken)
-    {
-        return base.SaveChangesAsync(cancellationToken);
-    }
+    public DbSet<CardTransaction> CardTransactions => Set<CardTransaction>();
 
     private IDbContextTransaction _currentTransaction;
 

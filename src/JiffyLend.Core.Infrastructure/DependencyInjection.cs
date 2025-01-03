@@ -7,6 +7,7 @@ using FluentValidation;
 
 using JiffyLend.Core.Common;
 using JiffyLend.Core.Common.Interfaces;
+using JiffyLend.Core.Infrastructure.Common;
 using JiffyLend.Core.Infrastructure.Interfaces;
 using JiffyLend.Core.Infrastructure.Security.Behaviors;
 
@@ -16,6 +17,8 @@ using MediatR;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+
+using static System.Net.WebRequestMethods;
 
 /// <summary>
 /// Handles the wireups for JiffyLand.Core and
@@ -73,7 +76,11 @@ public static class DependencyInjection
 
         });
 
+        services.AddHttpClient("Core", configure => {
+            configure.BaseAddress = new Uri("https://localhost:7165");
+        });
 
+        services.AddSingleton<ICoreHttpClient, CoreHttpClient>();
         services.AddSingleton<IDateTime, JiffyTime>();
         services.AddTransient<IUser, User>();
 

@@ -11,9 +11,9 @@ using JiffyLend.Core.Infrastructure.Models;
 public class CoreHttpClient : ICoreHttpClient
 {
     private readonly HttpClient _httpClient;
-    public CoreHttpClient(HttpClient httpClient)
+    public CoreHttpClient(IHttpClientFactory httpClientFactory)
     {
-        _httpClient = httpClient;
+        _httpClient = httpClientFactory.CreateClient("Core");
     }
 
     public async Task<AccountInfo> GetAccountInfo(Guid accountId, CancellationToken token)
