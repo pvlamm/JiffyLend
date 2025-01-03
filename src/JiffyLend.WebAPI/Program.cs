@@ -50,3 +50,6 @@ app.UseHttpsRedirection();
 app.MapEndpoints();
 
 app.Run();
+
+// This exists for Testing
+public partial class Program;

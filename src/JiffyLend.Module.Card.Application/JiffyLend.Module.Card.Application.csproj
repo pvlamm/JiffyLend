@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\JiffyLend.Core.Infrastructure\JiffyLend.Core.Infrastructure.csproj" />
     <ProjectReference Include="..\JiffyLend.Core\JiffyLend.Core.csproj" />
+    <ProjectReference Include="..\JiffyLend.Module.Card.Domain\JiffyLend.Module.Card.Domain.csproj" />
   </ItemGroup>
 
 </Project>
