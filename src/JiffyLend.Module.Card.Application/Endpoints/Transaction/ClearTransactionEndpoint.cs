@@ -7,12 +7,19 @@ using System.Threading.Tasks;
 
 using JiffyLend.Core.Interfaces;
 
+using MediatR;
+
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 
 public class ClearTransactionEndpoint : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
-        throw new NotImplementedException();
+        app.MapPut("/transaction/{id:guid}/clear", async (Guid id, ISender sender, CancellationToken token) =>
+        {
+
+        }).WithTags("Transaction");
     }
 }

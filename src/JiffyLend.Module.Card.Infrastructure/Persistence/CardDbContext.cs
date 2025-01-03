@@ -12,6 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage;
 
 public class CardDbContext : DbContext, ICardDbContext
 {
+
+    public CardDbContext(DbContextOptions<CardDbContext> options) : base(options)
+    {
+    }
     public DbSet<Account> Accounts => Set<Account>();
 
     public DbSet<Card> Cards => Set<Card>();

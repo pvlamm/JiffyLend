@@ -9,7 +9,7 @@ public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
 {
     public void Configure(EntityTypeBuilder<Customer> builder)
     {
-        builder.ToTable("Customers");
+        builder.ToTable(nameof(Customer));
         builder.HasKey(x => x.Id);
 
         builder.HasIndex(x => x.EmailAddress)

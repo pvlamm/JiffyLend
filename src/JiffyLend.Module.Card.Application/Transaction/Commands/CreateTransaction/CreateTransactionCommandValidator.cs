@@ -5,6 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-internal class CreateTransactionCommandValidator
+using FluentValidation;
+
+public class CreateTransactionCommandValidator : AbstractValidator<CreateTransactionCommand>
 {
+    public CreateTransactionCommandValidator()
+    {
+    }
 }

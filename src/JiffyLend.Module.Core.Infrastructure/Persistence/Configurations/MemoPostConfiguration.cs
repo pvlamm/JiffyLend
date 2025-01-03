@@ -9,7 +9,7 @@ public class MemoPostConfiguration : IEntityTypeConfiguration<MemoPost>
 {
     public void Configure(EntityTypeBuilder<MemoPost> builder)
     {
-        builder.ToTable("MemoPosts");
+        builder.ToTable(nameof(MemoPost));
         builder.HasKey(x => x.Id);
         builder.Property(x => x.AccountId);
         builder.Property(x => x.CreateDate);

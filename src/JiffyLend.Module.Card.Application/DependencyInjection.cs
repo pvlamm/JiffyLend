@@ -1,5 +1,14 @@
 ﻿namespace JiffyLend.Module.Card.Application;
 
-public class DependencyInjection
+using JiffyLend.Core.Infrastructure.Extensions;
+
+using Microsoft.Extensions.DependencyInjection;
+
+public static class DependencyInjection
 {
+    public static IServiceCollection AddModuleCardApplication(this IServiceCollection services)
+    {
+        services.AddEndpoints(typeof(DependencyInjection).Assembly);
+        return services;
+    }
 }
