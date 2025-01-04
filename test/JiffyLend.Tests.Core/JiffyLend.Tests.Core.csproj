@@ -31,10 +31,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Modules\Core\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\src\JiffyLend.WebAPI\JiffyLend.WebAPI.csproj" />
   </ItemGroup>
 
