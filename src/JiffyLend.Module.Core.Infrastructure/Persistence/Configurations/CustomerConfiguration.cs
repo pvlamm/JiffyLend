@@ -27,14 +27,9 @@ public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
             .HasMaxLength(120)
             .IsRequired();
 
-        builder.HasMany(x => x.Accounts)
+        builder.HasOne(x => x.Parent)
             .WithMany(x => x.Customers)
-            .UsingEntity<Account>(x => x.HasOne<Account>()
-                .WithMany()
-                .HasForeignKey(x => x.Id),
-                x => x.HasOne<Customer>()
-                .WithMany()
-                .HasForeignKey(x => x.Id)
-            );
+            .HasPrincipalKey(x => x.Id);
+
     }
 }

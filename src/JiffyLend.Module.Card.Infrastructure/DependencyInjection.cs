@@ -13,7 +13,7 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddModuleCardInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        var connectionString = configuration.GetConnectionString("Core");
+        var connectionString = configuration.GetConnectionString("Card");
 
         services.AddDbContext<CardDbContext>((sp, options) =>
         {

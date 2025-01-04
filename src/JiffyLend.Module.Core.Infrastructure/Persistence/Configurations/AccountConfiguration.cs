@@ -26,5 +26,9 @@ public class AccountConfiguration : IEntityTypeConfiguration<Account>
             .Property(x => x.CreateDate);
         builder
             .Property(x => x.UpdateDate);
+
+        builder.HasMany(x => x.Customers)
+            .WithOne(x => x.Parent)
+            .HasForeignKey(x => x.ParentId);
     }
 }
