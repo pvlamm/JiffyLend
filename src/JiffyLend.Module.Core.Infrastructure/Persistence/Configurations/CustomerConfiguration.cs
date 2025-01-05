@@ -9,7 +9,7 @@ public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
 {
     public void Configure(EntityTypeBuilder<Customer> builder)
     {
-        builder.ToTable("Customers");
+        builder.ToTable(nameof(Customer));
         builder.HasKey(x => x.Id);
 
         builder.HasIndex(x => x.EmailAddress)
@@ -27,14 +27,9 @@ public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
             .HasMaxLength(120)
             .IsRequired();
 
-        builder.HasMany(x => x.Accounts)
+        builder.HasOne(x => x.Parent)
             .WithMany(x => x.Customers)
-            .UsingEntity<Account>(x => x.HasOne<Account>()
-                .WithMany()
-                .HasForeignKey(x => x.Id),
-                x => x.HasOne<Customer>()
-                .WithMany()
-                .HasForeignKey(x => x.Id)
-            );
+            .HasPrincipalKey(x => x.Id);
+
     }
 }

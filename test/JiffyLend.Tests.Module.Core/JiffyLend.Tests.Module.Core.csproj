@@ -15,15 +15,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\JiffyLend.WebAPI\JiffyLend.WebAPI.csproj" />
     <ProjectReference Include="..\JiffyLend.Tests.Core\JiffyLend.Tests.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Using Include="Xunit" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Accounts\" />
   </ItemGroup>
 
 </Project>

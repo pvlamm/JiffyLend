@@ -13,9 +13,10 @@ public sealed class MsSqlFixture : IAsyncLifetime
 {
     private readonly MsSqlContainer _msSqlContainer = new MsSqlBuilder()
         .WithImage("mcr.microsoft.com/mssql/server:2022-CU16-ubuntu-22.04")
-        .WithPassword("password")
+        .WithPassword("Password1234!")
         .WithPortBinding(6500, 1433)
         .WithWaitStrategy(Wait.ForUnixContainer().UntilPortIsAvailable(1433))
+        .WithName("jiffylend-mssql")
         .Build();
 
     public string ConnectionString => _msSqlContainer.GetConnectionString();

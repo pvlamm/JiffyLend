@@ -26,7 +26,7 @@ public class CoreDbContext : DbContext, ICoreDbContext
 
     public Task<int> SaveChangesAsync(CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        return base.SaveChangesAsync(cancellationToken);
     }
 
     private IDbContextTransaction _currentTransaction;

@@ -1,5 +1,6 @@
 ﻿namespace JiffyLend.Module.Core.Application.Endpoints.Customer;
 
+using JiffyLend.Core.Infrastructure.Models;
 using JiffyLend.Core.Interfaces;
 using JiffyLend.Module.Core.Application.Common.Models;
 using JiffyLend.Module.Core.Application.Common.Models.Mapper;
@@ -25,7 +26,7 @@ public class CreateCustomerEndpoint : IEndpoint
                 _ => Results.BadRequest(result.Errors)
             };
         })
-        .Produces<Guid>(StatusCodes.Status201Created)
+        .Produces<CustomerInfo>(StatusCodes.Status201Created)
         .Produces<string[]>(StatusCodes.Status400BadRequest)
         .WithTags("Customer");
     }

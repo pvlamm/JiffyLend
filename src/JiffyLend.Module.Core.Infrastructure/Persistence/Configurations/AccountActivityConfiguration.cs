@@ -9,7 +9,7 @@ public class AccountActivityConfiguration : IEntityTypeConfiguration<AccountActi
 {
     public void Configure(EntityTypeBuilder<AccountActivity> builder)
     {
-        builder.ToTable("AccountActivity");
+        builder.ToTable(nameof(AccountActivity));
         builder.HasKey(x => x.Id);
         builder.Property(x => x.ParentId);
         builder.Property(x => x.MemoPostId)

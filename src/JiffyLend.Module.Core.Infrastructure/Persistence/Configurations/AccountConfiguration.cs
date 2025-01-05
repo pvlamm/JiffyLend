@@ -9,7 +9,7 @@ public class AccountConfiguration : IEntityTypeConfiguration<Account>
 {
     public void Configure(EntityTypeBuilder<Account> builder)
     {
-        builder.ToTable("Accounts");
+        builder.ToTable(nameof(Account));
 
         builder.HasIndex(x => x.AccountNumber)
             .IsUnique();
@@ -26,5 +26,9 @@ public class AccountConfiguration : IEntityTypeConfiguration<Account>
             .Property(x => x.CreateDate);
         builder
             .Property(x => x.UpdateDate);
+
+        builder.HasMany(x => x.Customers)
+            .WithOne(x => x.Parent)
+            .HasForeignKey(x => x.ParentId);
     }
 }

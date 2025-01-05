@@ -17,7 +17,7 @@ public interface ICustomerService
 
     Task<Guid> Create(Customer customer, CancellationToken token = default);
 
-    Task<bool> Update(Customer customer, CancellationToken token = default);
+    Task Update(Customer customer, CancellationToken token = default);
 
-    Task<bool> Delete(Guid id, CancellationToken token = default);
+    Task Delete(Guid id, CancellationToken token = default);
 }

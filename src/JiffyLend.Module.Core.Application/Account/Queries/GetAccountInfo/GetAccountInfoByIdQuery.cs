@@ -3,6 +3,7 @@
 using System;
 using System.Threading.Tasks;
 
+using JiffyLend.Core.Infrastructure.Models;
 using JiffyLend.Module.Core.Application.Common.Interfaces;
 using JiffyLend.Module.Core.Application.Common.Models;
 using JiffyLend.Module.Core.Application.Common.Models.Mapper;

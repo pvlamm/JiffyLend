@@ -18,5 +18,5 @@ public interface ICardDbContext
 
     void RollbackTransaction();
 
-    Task<int> SaveChangesAsync(CancellationToken cancellationToken);
+    Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 }

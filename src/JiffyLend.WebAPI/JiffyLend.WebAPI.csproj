@@ -1,28 +1,33 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>2dafe37a-e814-4acc-a799-3dbf61433784</UserSecretsId>
-    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UserSecretsId>2dafe37a-e814-4acc-a799-3dbf61433784</UserSecretsId>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+		<GenerateRuntimeConfigurationFiles>True</GenerateRuntimeConfigurationFiles>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0" />
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
-    <PackageReference Include="Scalar.AspNetCore" Version="1.2.72" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
+		<PackageReference Include="Scalar.AspNetCore" Version="1.2.72" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\JiffyLend.Core.Infrastructure\JiffyLend.Core.Infrastructure.csproj" />
-    <ProjectReference Include="..\JiffyLend.Core\JiffyLend.Core.csproj" />
-    <ProjectReference Include="..\JiffyLend.Module.Card.Application\JiffyLend.Module.Card.Application.csproj" />
-    <ProjectReference Include="..\JiffyLend.Module.Card.Domain\JiffyLend.Module.Card.Domain.csproj" />
-    <ProjectReference Include="..\JiffyLend.Module.Card.Infrastructure\JiffyLend.Module.Card.Infrastructure.csproj" />
-    <ProjectReference Include="..\JiffyLend.Module.Core.Application\JiffyLend.Module.Core.Application.csproj" />
-    <ProjectReference Include="..\JiffyLend.Module.Core.Domain\JiffyLend.Module.Core.Domain.csproj" />
-    <ProjectReference Include="..\JiffyLend.Module.Core.Infrastructure\JiffyLend.Module.Core.Infrastructure.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\JiffyLend.Core.Infrastructure\JiffyLend.Core.Infrastructure.csproj" />
+		<ProjectReference Include="..\JiffyLend.Core\JiffyLend.Core.csproj" />
+		<ProjectReference Include="..\JiffyLend.Module.Card.Application\JiffyLend.Module.Card.Application.csproj" />
+		<ProjectReference Include="..\JiffyLend.Module.Card.Domain\JiffyLend.Module.Card.Domain.csproj" />
+		<ProjectReference Include="..\JiffyLend.Module.Card.Infrastructure\JiffyLend.Module.Card.Infrastructure.csproj" />
+		<ProjectReference Include="..\JiffyLend.Module.Core.Application\JiffyLend.Module.Core.Application.csproj" />
+		<ProjectReference Include="..\JiffyLend.Module.Core.Domain\JiffyLend.Module.Core.Domain.csproj" />
+		<ProjectReference Include="..\JiffyLend.Module.Core.Infrastructure\JiffyLend.Module.Core.Infrastructure.csproj" />
+	</ItemGroup>
 
 </Project>

@@ -1,5 +1,7 @@
 using JiffyLend.Core.Infrastructure;
 using JiffyLend.Core.Infrastructure.Extensions;
+using JiffyLend.Module.Card.Application;
+using JiffyLend.Module.Card.Infrastructure;
 using JiffyLend.Module.Core.Application;
 using JiffyLend.Module.Core.Infrastructure;
 
@@ -16,6 +18,9 @@ builder.Services.AddCoreInfrastructure(builder.Configuration);
 
 builder.Services.AddModuleCoreApplication();
 builder.Services.AddModuleCoreInfrastructure(builder.Configuration);
+
+builder.Services.AddModuleCardApplication();
+builder.Services.AddModuleCardInfrastructure(builder.Configuration);
 
 builder.Services.AddCors(options =>
 {

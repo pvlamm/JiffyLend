@@ -6,5 +6,6 @@ public interface ICreatedAnAccount
 {
     Guid Id { get; }
     string Title { get; }
+    bool IsActive { get; }
     DateTime ChangeDate { get; }
 }
