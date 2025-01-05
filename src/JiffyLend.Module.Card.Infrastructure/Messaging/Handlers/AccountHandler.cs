@@ -31,7 +31,7 @@ public class AccountHandler : IConsumer<ICreatedAnAccount>,
         account.UpdateDate = message.ChangeDate;
         account.IsActive = message.IsActive;
 
-        await _cardDbContext.SaveChangesAsync(default);
+        await _cardDbContext.SaveChangesAsync();
     }
 
     public async Task Consume(ConsumeContext<ICreatedAnAccount> context)
@@ -48,8 +48,8 @@ public class AccountHandler : IConsumer<ICreatedAnAccount>,
                 IsActive = message.IsActive,
                 UpdateDate = message.ChangeDate
             };
-            await _cardDbContext.Accounts.AddAsync(account, default);
-            await _cardDbContext.SaveChangesAsync(default);
+            await _cardDbContext.Accounts.AddAsync(account);
+            await _cardDbContext.SaveChangesAsync();
         }
 
     }

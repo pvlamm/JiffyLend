@@ -1,39 +1,39 @@
 ﻿namespace JiffyLend.Tests.Module.Core.Modules.Card;
 using System;
-using System.ComponentModel;
-using System.Net.Http.Json;
+using System.Linq;
+using System.Threading.Tasks;
 
-using JiffyLend.Core.Infrastructure.Models;
-using JiffyLend.Module.Core.Application.Common.Models;
-using JiffyLend.Tests.Core;
+using JiffyLend.Core.Extensions;
+using JiffyLend.Core.Infrastructure.Messages;
 using JiffyLend.Tests.Core.Modules;
 
-
-public class AccountTests // : ModuleTestBase, IClassFixture<FunctionalCoreWebAPIFactory>
+[Collection("TestContainers")]
+public class AccountTests
 {
     private readonly ModuleTestBase _testBase;
-]
+
     public AccountTests(ModuleTestBase testBase)
     {
         _testBase = testBase;
     }
 
     [Fact]
-    public void CreateAccountCommandHandler_ShouldCreateAccount()
+    public async Task CreatedAccount_FromCore_ShouldCreateInCard()
     {
-        var httpClient = _testBase.Factory.CreateClient();
-
-        var account = new CreateAccount
+        var id = JiffyGuid.NewId();
+        await _testBase.Publisher.Publish<ICreatedAnAccount>(new
         {
-            Title = "JiffyLend Test Account, LLC.",
-        };
+            Id = id,
+            Title = Faker.Name.FullName(),
+            ChangeDate = DateTime.UtcNow,
+        });
 
-        var response = httpClient.PostAsJsonAsync("/account", account).Result;
+        // Let the consumer have a moment...
+        await Task.Delay(1500);
 
-        Assert.True(response.IsSuccessStatusCode);
-        Assert.True(response.StatusCode == System.Net.HttpStatusCode.Created);
+        var accountExists = _testBase.CardDbContext.Accounts.Any(x => x.Id == id);
 
-        var accountInfo = response.Content.ReadFromJsonAsync<AccountInfo>().Result;
-        Console.WriteLine(response.Content.ReadAsStringAsync().Result);
+        Assert.True(accountExists);
+
     }
 }

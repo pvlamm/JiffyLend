@@ -9,12 +9,14 @@ using Riok.Mapperly.Abstractions;
 [Mapper]
 public static partial class CustomerMapper
 {
+    [MapProperty(nameof(CreateCustomer.AccountId), nameof(CreateCustomerCommand.AccountId))]
     public static partial CreateCustomerCommand ToCreateCustomerCommand(this CreateCustomer createCustomer);
 
     public static partial UpdateCustomerCommand ToUpdateCustomerCommand(this UpdateCustomer updateCustomer);
 
     public static partial Customer ToCustomer(this UpdateCustomerCommand updateCustomerCommand);
 
+    [MapProperty(nameof(CreateCustomerCommand.AccountId), nameof(Customer.ParentId))]
     public static partial Customer ToCustomer(this CreateCustomerCommand createCustomerCommand);
 
     public static partial CustomerInfo ToCustomerInfo(this Customer customer);

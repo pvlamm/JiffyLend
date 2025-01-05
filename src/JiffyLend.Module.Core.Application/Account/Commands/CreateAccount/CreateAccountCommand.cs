@@ -47,7 +47,7 @@ public class CreateAccountCommandHandler : IRequestHandler<CreateAccountCommand,
         await _publish.Publish<ICreatedAnAccount>(new
         {
             account.Id,
-            DisplayName = account.Title,
+            account.Title,
             ChangeDate = account.CreateDate
         }, cancellationToken);
 

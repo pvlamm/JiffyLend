@@ -13,11 +13,11 @@ public class CreateCustomerCommandValidation : AbstractValidator<CreateCustomerC
         ICustomerService customerService)
     {
         RuleFor(x => x.AccountId)
-            .Must(x => { return !accountService.AccountExists(x); })
+            .Must(x => { return accountService.AccountExists(x); })
             .WithMessage(ERROR_ACCOUNT_DOES_NOT_EXIST);
 
         RuleFor(x => x.EmailAddress)
-            .Must(customerService.EmailExists)
+            .Must(x => { return !customerService.EmailExists(x); })
             .WithMessage(ERROR_CUSTOMER_EMAIL_ALREADY_EXISTS);
     }
 }
