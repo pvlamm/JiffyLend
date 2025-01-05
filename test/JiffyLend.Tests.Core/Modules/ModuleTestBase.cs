@@ -11,21 +11,21 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-public abstract class ModuleTestBase
+// : IClassFixture<FunctionalCoreWebAPIFactory>, 
+public class ModuleTestBase : IClassFixture<FunctionalCoreWebAPIFactory>, IDisposable
 {
     private readonly IServiceScope _scope;
     
-    protected readonly WebApplicationFactory<Program> _webAPIFactory;
-    protected readonly ISender Sender;
-    protected readonly CoreDbContext _coreDbContext;
-    protected readonly CardDbContext _cardDbContext;
+    public readonly WebApplicationFactory<Program> Factory;
+    public readonly ISender Sender;
+    public readonly CoreDbContext _coreDbContext;
+    public readonly CardDbContext _cardDbContext;
 
 
-    protected ModuleTestBase(FunctionalCoreWebAPIFactory webAPIFactory)
+    protected ModuleTestBase()
     {
-        _webAPIFactory = webAPIFactory;
-
-        _scope = _webAPIFactory.Services.CreateScope();
+        Factory = new FunctionalCoreWebAPIFactory();
+        _scope = Factory.Services.CreateScope();
         Sender = _scope.ServiceProvider.GetRequiredService<ISender>();
         _coreDbContext = _scope.ServiceProvider.GetRequiredService<CoreDbContext>();
         _cardDbContext = _scope.ServiceProvider.GetRequiredService<CardDbContext>();
@@ -39,5 +39,10 @@ public abstract class ModuleTestBase
         {
             _cardDbContext.Database.Migrate();
         }
+    }
+
+    public void Dispose()
+    {
+        Factory?.Dispose();
     }
 }

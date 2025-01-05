@@ -2,6 +2,7 @@
 
 using System;
 
+using JiffyLend.Core.Infrastructure.Models;
 using JiffyLend.Core.Interfaces;
 using JiffyLend.Module.Core.Application.Common.Models;
 using JiffyLend.Module.Core.Application.Customer.Queries;

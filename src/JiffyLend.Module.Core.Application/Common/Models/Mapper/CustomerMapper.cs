@@ -1,5 +1,6 @@
 ﻿namespace JiffyLend.Module.Core.Application.Common.Models.Mapper;
 
+using JiffyLend.Core.Infrastructure.Models;
 using JiffyLend.Module.Core.Application.Customer.Commands;
 using JiffyLend.Module.Core.Domain.Entities;
 

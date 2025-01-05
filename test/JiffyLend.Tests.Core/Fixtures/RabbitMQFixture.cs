@@ -15,8 +15,9 @@ public sealed class RabbitMQFixture : IAsyncLifetime
         .WithImage("rabbitmq:3-management")
         .WithUsername("guest")
         .WithPassword("guest")
-        .WithPortBinding(5600, 5672)
+        .WithPortBinding(6600, 5672)
         .WithWaitStrategy(Wait.ForUnixContainer().UntilPortIsAvailable(5672))
+        .WithName("jiffylend-rabbitmq")
         .Build();
     public Task InitializeAsync()
     {

@@ -1,4 +1,6 @@
 ﻿namespace JiffyLend.Module.Core.Application.Endpoints.Account;
+
+using JiffyLend.Core.Infrastructure.Models;
 using JiffyLend.Core.Interfaces;
 using JiffyLend.Module.Core.Application.Account.Queries;
 using JiffyLend.Module.Core.Application.Common.Models;

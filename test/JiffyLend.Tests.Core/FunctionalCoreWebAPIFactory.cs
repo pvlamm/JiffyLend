@@ -8,8 +8,8 @@ using Microsoft.Extensions.Hosting;
 
 public class FunctionalCoreWebAPIFactory : WebApplicationFactory<Program>, IDisposable
 {
-    public readonly MsSqlFixture DatabaseFixture = new();
-    public readonly RabbitMQFixture MessagingFixture = new ();
+    public static readonly MsSqlFixture DatabaseFixture = new();
+    public static readonly RabbitMQFixture MessagingFixture = new ();
 
     protected override IHost CreateHost(IHostBuilder builder)
     {

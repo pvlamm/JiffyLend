@@ -59,24 +59,22 @@ public static class DependencyInjection
 
             mt.UsingRabbitMq((context, cfg) =>
             {
-                // 127.0.0.1:5500
-                cfg.Host("127.0.0.1", 5600, "/", h =>
-                {
-                    h.Username("guest");
-                    h.Password("guest");
-                });
-                cfg.Host(configuration["RabbitMQ:HostName"], "/", h =>
-                {
-                    h.Username(configuration["RabbitMQ:Username"]);
-                    h.Password(configuration["RabbitMQ:Password"]);
-                });
+                cfg.Host(configuration["RabbitMQ:HostName"],
+                    ushort.Parse(configuration["RabbitMQ:Port"]),
+                        "/", 
+                        h =>
+                        {
+                            h.Username(configuration["RabbitMQ:Username"]);
+                            h.Password(configuration["RabbitMQ:Password"]);
+                        });
 
                 cfg.ConfigureEndpoints(context);
             });
 
         });
 
-        services.AddHttpClient("Core", configure => {
+        services.AddHttpClient("Core", configure =>
+        {
             configure.BaseAddress = new Uri("https://localhost:7165");
         });
 
